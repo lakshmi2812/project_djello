@@ -1,5 +1,13 @@
 const express = require("express");
 const app = express();
+const cors = require("cors");
+
+//CORS MIDDLEWARE
+app.use(cors());
+
+//require models
+var models = require("./models");
+var Board = models.Board;
 
 //isomorphic-fetch and es-6 promise
 require("es6-promise").polyfill();
@@ -92,11 +100,15 @@ app.use(morganToolkit());
 //   res.render("welcome/index");
 // });
 
-app.get("/", async (req, res, next) => {
-  let boards = await Boards.findAll();
-  console.log("Boards is here:");
-  console.log(boards);
-  res.json(boards);
+app.get("/api", async (req, res, next) => {
+  try {
+    let boards = await Board.findAll();
+    console.log("Boards is here:");
+    console.log(boards);
+    res.json(boards);
+  } catch (err) {
+    console.error(err);
+  }
 });
 
 // ----------------------------------------
