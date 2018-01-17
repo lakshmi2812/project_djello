@@ -51,3 +51,11 @@ types of activites to log
 * adding members
 * marking as complete/incomplete
 * editing priority value
+
+sequelize model:create --name User --attributes "username:string
+password:string"
+
+sequelize model:create --name Board --attributes "title:string userId:integer"
+
+sequelize model:create --name List --attributes "title:string description:text
+boardId:integer"

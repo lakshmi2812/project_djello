@@ -28,8 +28,20 @@ if (process.env.NODE_ENV !== "production") {
 // ----------------------------------------
 // Body Parser
 // ----------------------------------------
+
+// app.use(function(req, res, next) {
+//   res.header("Access-Control-Allow-Origin", "*");
+//   res.header(
+//     "Access-Control-Allow-Headers",
+//     "Origin, X-Requested-With, Content-Type, Accept"
+//   );
+//   next();
+// });
+
 const bodyParser = require("body-parser");
 app.use(bodyParser.urlencoded({ extended: true }));
+//In order to be able to parse json data in the post request
+app.use(bodyParser.json());
 
 // ----------------------------------------
 // Sessions/Cookies
@@ -100,16 +112,24 @@ app.use(morganToolkit());
 //   res.render("welcome/index");
 // });
 
-app.get("/api", async (req, res, next) => {
-  try {
-    let boards = await Board.findAll();
-    console.log("Boards is here:");
-    console.log(boards);
-    res.json(boards);
-  } catch (err) {
-    console.error(err);
-  }
-});
+// app.get("/api", async (req, res, next) => {
+//   try {
+//     let boards = await Board.findAll();
+//     console.log("Boards is here:");
+//     console.log(boards);
+//     res.json(boards);
+//   } catch (err) {
+//     console.error(err);
+//   }
+// });
+
+//require Routes
+var boards = require("./routers/boards");
+var lists = require("./routers/lists");
+
+//use Routes
+app.use("/boards", boards);
+app.use("/lists", lists);
 
 // ----------------------------------------
 // Template Engine

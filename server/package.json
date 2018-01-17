@@ -7,7 +7,11 @@
     "lib": "lib"
   },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "seed":
+      "sequelize db:migrate:undo:all && sequelize db:migrate && sequelize db:seed:all",
+    "seeds":
+      "sequelize db:migrate:undo:all && sequelize db:migrate && sequelize db:seed:all"
   },
   "author": "",
   "license": "ISC",
@@ -22,6 +26,7 @@
     "express-flash-messages": "^0.1.1",
     "express-handlebars": "^3.0.0",
     "express-method-override-get-post-support": "^1.0.1",
+    "faker": "^4.1.0",
     "isomorphic-fetch": "^2.2.1",
     "load-helpers": "^1.0.1",
     "lodash": "^4.17.4",
