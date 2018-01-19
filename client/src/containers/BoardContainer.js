@@ -60,8 +60,8 @@ class BoardContainer extends Component {
 const mapStateToProps = state => {
   console.log("state in container", state.boards);
   return {
-    boards: state.boards,
-    isFetching: state.isFetching
+    boards: state.boardData.boards,
+    isFetching: state.isFetchingBoards
   };
 };
 

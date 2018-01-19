@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import "./App.css";
+import boardAndListCombined from "./reducers";
 import BoardContainer from "./containers/BoardContainer";
 import ListContainer from "./containers/ListContainer";
 

@@ -51,7 +51,7 @@ class ListContainer extends Component {
 const mapStateToProps = state => {
   console.log("lists state in container", state.lists);
   return {
-    lists: state.lists,
+    lists: state.listData.lists,
     //you may have to change isFetching later!Now, its common while fetching boards and lists right!
     isFetchingLists: state.isFetchingLists
   };

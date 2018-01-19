@@ -1,4 +1,5 @@
 import * as Actions from "./actions";
+import { combineReducers } from "redux";
 
 const initialState = {
   boards: [],
@@ -9,7 +10,7 @@ const initialState = {
 };
 
 //BOARD REDUCER
-export function board(state = initialState, action) {
+function boardData(state = initialState, action) {
   switch (action.type) {
     case Actions.GET_BOARDS_SUCCESS:
       //console.log("Success data in reducer", state.boards);
@@ -37,7 +38,7 @@ export function board(state = initialState, action) {
 }
 
 //LIST REDUCER
-export function list(state = initialState, action) {
+function listData(state = initialState, action) {
   switch (action.type) {
     case Actions.GET_LISTS_SUCCESS:
       //console.log("Success data in reducer", state.boards);
@@ -63,3 +64,5 @@ export function list(state = initialState, action) {
       return state;
   }
 }
+
+export const boardAndListCombined = combineReducers({ boardData, listData });

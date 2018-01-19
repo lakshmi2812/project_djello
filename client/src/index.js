@@ -6,7 +6,7 @@ import App from "./App.js";
 import { Provider } from "react-redux";
 import { createStore, applyMiddleware } from "redux";
 import thunk from "redux-thunk";
-import { board } from "./reducers";
+import { boardAndListCombined } from "./reducers";
 import {
   getBOARDSRequest,
   getBOARDSSuccess,
@@ -14,7 +14,7 @@ import {
   getInitialBOARDS
 } from "./actions";
 
-let store = createStore(board, applyMiddleware(thunk));
+let store = createStore(boardAndListCombined, applyMiddleware(thunk));
 
 ReactDOM.render(
   <Provider store={store}>
